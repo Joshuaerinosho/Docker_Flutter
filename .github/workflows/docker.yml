@@ -31,8 +31,6 @@ jobs:
       - name: Build Docker image
         run: docker build -t joshuaerinosho/flutter_coverage:1.0 .
 
-      # Runs a set of commands using the runners shell
-#       - name: Run a multi-line script
-#         run: |
-#           echo Add other actions to build,
-#           echo test, and deploy your project.
+      - name: Docker push
+        run: |
+          docker push joshuaerinosho/flutter_coverage:1.0
