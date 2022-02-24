@@ -11,5 +11,5 @@ WORKDIR /docker_flutter
 RUN flutter test --coverage
 RUN lcov --capture --directory ./coverage --output-file lcov.info
 
-FROM grafana/ci-build-windows
+FROM grafana/ci-build-windows:0.2.0
 RUN flutter test
