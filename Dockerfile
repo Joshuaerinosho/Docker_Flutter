@@ -9,6 +9,10 @@ RUN git clone https://github.com/flutter/flutter.git -b stable
 RUN export PATH="$PATH:`pwd`/flutter/bin"
 RUN flutter precache
 RUN flutter doctor
+COPY . ./docker_flutter
+WORKDIR /docker_flutter
+RUN flutter test --coverage
+RUN lcov --capture --directory ./coverage --output-file lcov.info
 
 
 
