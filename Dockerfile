@@ -4,7 +4,7 @@ RUN echo "no" | avdmanager create avd -n Android_4.1_API_16 -k "system-images;an
 
 
 FROM cirrusci/flutter:dev
-COPY --from=build . ./bin/emulator
+# COPY --from=build . ./bin/emulator
 RUN apt-get update
 RUN apt-get install -y --no-install-recommends cmake ninja-build clang build-essential pkg-config libgtk-3-dev liblzma-dev lcov
 COPY . ./docker_flutter
