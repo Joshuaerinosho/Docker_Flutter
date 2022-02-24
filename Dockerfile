@@ -2,7 +2,6 @@ FROM androidsdk/android-30 AS build
 RUN sdkmanager "system-images;android-16;default;armeabi-v7a"
 RUN echo "no" | avdmanager create avd -n Android_4.1_API_16 -k "system-images;android-16;default;armeabi-v7a"
 
-
 FROM cirrusci/flutter:dev
 # COPY --from=build . ./bin/emulator
 RUN apt-get update
@@ -11,3 +10,6 @@ COPY . ./docker_flutter
 WORKDIR /docker_flutter
 RUN flutter test --coverage
 RUN lcov --capture --directory ./coverage --output-file lcov.info
+
+FROM grafana/ci-build-windows
+RUN flutter test
