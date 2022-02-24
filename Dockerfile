@@ -1,5 +1,6 @@
 FROM androidsdk/android-30 AS build
-RUN android_emulator.sh
+RUN sdkmanager "system-images;android-16;default;armeabi-v7a"
+RUN echo "no" | avdmanager create avd -n Android_4.1_API_16 -k "system-images;android-16;default;armeabi-v7a"
 
 
 FROM cirrusci/flutter:dev
