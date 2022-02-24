@@ -22,6 +22,12 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+      - name: Docker Login
+        env: 
+          DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
+          DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+        run: |
+          docker login -u $DOCKER_USERNAME -P $DOCKER_PASSWORD
       - name: Build Docker image
         run: docker build -t joshuaerinosho/flutter_coverage:1.0 .
 
