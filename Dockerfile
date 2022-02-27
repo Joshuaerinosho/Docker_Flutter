@@ -1,5 +1,5 @@
 FROM androidsdk/android-30
-RUN avdmanager create avd -n testEmulator -k "system-images;android-30;google_apis;x86_64"
+RUN echo "no" | avdmanager create avd -n testEmulator -k "system-images;android-30;google_apis;x86_64"
 RUN emulator -avd testEmulator -noaudio -no-boot-anim -gpu off
 
 FROM cirrusci/flutter:dev
