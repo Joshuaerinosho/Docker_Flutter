@@ -1,6 +1,7 @@
 FROM androidsdk/android-30
-RUN echo "no" | avdmanager create avd -n testEmulator -k "system-images;android-30;google_apis;x86_64"
-RUN emulator -avd testEmulator -no-window -no-audio -no-boot-anim &
+RUN sdkmanager "system-images;android-30;google_apis;arm64-v8a"
+RUN echo "no" | avdmanager create avd -n Nexus_4_API_30 -k "system-images;android-30;google_apis;arm64-v8a"
+RUN emulator -avd Nexus_4_API_30 -no-window -no-audio -no-boot-anim &
 
 FROM cirrusci/flutter:dev
 RUN apt-get update
