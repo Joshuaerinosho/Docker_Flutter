@@ -14,7 +14,7 @@ WORKDIR /docker_flutter
 RUN git clone https://github.com/flutter/flutter.git -b stable
 
 
-RUN  export PATH=~./flutter/bin:$PATH
+RUN  export PATH=~/docker_flutter/flutter/bin:$PATH
 
 RUN  echo $PATH
 
