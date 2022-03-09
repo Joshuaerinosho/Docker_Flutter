@@ -2,7 +2,7 @@
 FROM ubuntu:jammy-20220301
 
 RUN apt-get update && \
-    apt-get -y install sudo snapd
+    apt-get -y install sudo snapd git
 
 RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
 
