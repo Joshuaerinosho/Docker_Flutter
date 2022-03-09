@@ -10,6 +10,4 @@ RUN sudo apt-get install android-sdk --assume-yes
 
 RUN git clone https://github.com/flutter/flutter.git -b stable
 
-RUN export PATH="$PATH:`pwd`/flutter/bin"
-
-RUN flutter doctor
+RUN export PATH="$PATH:`pwd`/flutter/bin" |  flutter doctor
