@@ -8,8 +8,6 @@ RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
 
 RUN sudo apt-get install android-sdk --assume-yes
 
-RUN  sudo apt install git-all
-
 RUN git clone https://github.com/flutter/flutter.git -b stable
 
 RUN export PATH="$PATH:`pwd`/flutter/bin"
