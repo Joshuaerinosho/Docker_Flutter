@@ -18,6 +18,4 @@ RUN  export PATH=~/docker_flutter/flutter/bin:$PATH
 
 RUN  echo $PATH
 
-RUN which flutter
-
 RUN flutter doctor
