@@ -27,8 +27,8 @@ jobs:
         run: |
           docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
       - name: Build Docker image
-        run: docker build -t joshuaerinosho/flutter:1.0 .
+        run: docker build -t joshuaerinosho/flutter:2.0 .
 
       - name: Docker push
         run: |
-          docker push joshuaerinosho/flutter:1.0
+          docker push joshuaerinosho/flutter:2.0
