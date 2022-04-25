@@ -6,7 +6,7 @@ COPY ./src ./docker_flutter
 WORKDIR /docker_flutter
 
 #Install Android SDK
-RUN sudo apt update && sudo apt install android-sdk
+RUN y | sudo apt update && sudo apt install android-sdk
 
 #Add CLI Tools to Path
 ENV PATH="$PATH:$ANDROID_SDK_ROOT/cmdline-tools/latest/bin"
