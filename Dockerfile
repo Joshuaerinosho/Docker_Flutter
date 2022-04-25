@@ -1,7 +1,7 @@
 
 FROM cirrusci/flutter:latest
 
-RUN apt-get install -y --no-install-recommends cmake ninja-build clang build-essential pkg-config libgtk-3-dev liblzma-dev sudo lcov
+RUN apt-get install -y --no-install-recommends sudo lcov
 COPY ./src ./docker_flutter
 WORKDIR /docker_flutter
 
