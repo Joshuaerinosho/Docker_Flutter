@@ -1,12 +1,28 @@
-FROM androidsdk/android-30
-RUN sdkmanager "system-images;android-30;google_apis;arm64-v8a"
-RUN echo "no" | avdmanager create avd -n Nexus_4_API_30 -k "system-images;android-30;google_apis;arm64-v8a"
-RUN emulator -avd Nexus_4_API_30 -no-window -no-audio -no-boot-anim &
 
-FROM cirrusci/flutter:stable
-RUN apt-get update
-RUN apt-get install -y --no-install-recommends cmake ninja-build clang build-essential pkg-config libgtk-3-dev liblzma-dev lcov
+FROM cirrusci/flutter:latest
+
+RUN apt-get install -y --no-install-recommends cmake ninja-build clang build-essential pkg-config libgtk-3-dev liblzma-dev sudo lcov
 COPY ./src ./docker_flutter
 WORKDIR /docker_flutter
-RUN flutter test --coverage
-RUN lcov --capture --directory ./coverage --output-file lcov.info
+
+#Install Android SDK
+RUN sudo apt-get install android-sdk --assume-yes
+
+#Add CLI Tools to Path
+ENV PATH="$PATH:$ANDROID_SDK_ROOT/cmdline-tools/latest/bin"
+
+#Create a variable for the Android SDK path
+ENV ANDROID_SDK_ROOT /usr/lib/android-sdk
+
+#Add Emulator to Path
+ENV PATH="$PATH:$ANDROID_SDK_ROOT/emulator"
+
+#Accept all licenses
+RUN yes | sdkmanager --licenses
+
+## Download an ARM system image to create an ARM emulator.
+RUN sdkmanager "system-images;android-25;google_apis;armeabi-v7a"
+
+RUN sdkmanager "system-images;android-16;default;armeabi-v7a"
+
+RUN flutter doctor
